@@ -8,8 +8,11 @@ import {
   LayoutAnimation
 } from "react-native";
 import Btn from "react-native-micro-animated-button";
+import { Actions } from "react-native-router-flux";
+
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -20,15 +23,19 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      LayoutAnimation.easeInEaseOut();
-      this.setState({ showButtons: true });
-    }, 500);
   }
 
-  componentWillUpdate() {
-    LayoutAnimation.easeInEaseOut();
+  onEmployeePress() {
+    this.b1.load();
+    setTimeout(() => {
+      Actions.EmployeeHome()
+    }, 1000);
   }
+
+  onManagerPress() {
+    this.b2.load();
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -57,46 +64,40 @@ export default class Home extends Component {
             - Prototype
           </Text>
         </View>
-        {this.state.showButtons ? (
-          <View
-            style={{ flex: 3, justifyContent: "center", alignItems: "center" }}
-          >
-            <Btn
-              foregroundColor={"royalblue"}
-              maxWidth={width * 0.9}
-              bounce={true}
-              renderLabel={
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ color: "royalblue" }}>Login as </Text>
-                  <Text style={{ color: "royalblue", fontWeight: "bold" }}>
-                    Employee{" "}
-                  </Text>
-                </View>
-              }
-              onPress={() => this.b1.load()}
-              ref={ref => (this.b1 = ref)}
-            />
-            <Btn
-              foregroundColor={"royalblue"}
-              maxWidth={width * 0.9}
-              bounce={true}
-              renderLabel={
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ color: "royalblue" }}>Login as </Text>
-                  <Text style={{ color: "royalblue", fontWeight: "bold" }}>
-                    Manager{" "}
-                  </Text>
-                </View>
-              }
-              onPress={() => this.b2.load()}
-              ref={ref => (this.b2 = ref)}
-            />
-          </View>
-        ) : (
-          <View
-            style={{ flex: 3, justifyContent: "center", alignItems: "center" }}
+        <View
+          style={{ flex: 3, justifyContent: "center", alignItems: "center" }}
+        >
+          <Btn
+            foregroundColor={"royalblue"}
+            maxWidth={width * 0.9}
+            bounce={true}
+            renderLabel={
+              <View style={{ flexDirection: "row" }}>
+                <Text style={{ color: "royalblue" }}>Login as </Text>
+                <Text style={{ color: "royalblue", fontWeight: "bold" }}>
+                  Employee{" "}
+                </Text>
+              </View>
+            }
+            onPress={() => this.onEmployeePress()}
+            ref={ref => (this.b1 = ref)}
           />
-        )}
+          <Btn
+            foregroundColor={"royalblue"}
+            maxWidth={width * 0.9}
+            bounce={true}
+            renderLabel={
+              <View style={{ flexDirection: "row" }}>
+                <Text style={{ color: "royalblue" }}>Login as </Text>
+                <Text style={{ color: "royalblue", fontWeight: "bold" }}>
+                  Manager{" "}
+                </Text>
+              </View>
+            }
+            onPress={() => this.onManagerPress()}
+            ref={ref => (this.b2 = ref)}
+          />
+        </View>
       </View>
     );
   }
