@@ -8,8 +8,10 @@ import {
   LayoutAnimation
 } from "react-native";
 import Btn from "react-native-micro-animated-button";
-import BottomNavigation, { Tab } from 'react-native-material-bottom-navigation'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import BottomNavigation, { Tab } from "react-native-material-bottom-navigation";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import Dashboard from './Dashboard'
+import Feed from './Feed'
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
 
@@ -18,15 +20,22 @@ export default class EmployeeHome extends Component {
     super(props);
     mainscreen = this;
     this.state = {
-      showButtons: false
+      showButtons: false,
+      tabIndex: 0
     };
   }
 
   componentDidMount() {}
 
+  render;
   render() {
     return (
       <View style={styles.container}>
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          {this.state.tabIndex === 0 ? <Dashboard /> : <Feed />}
+        </View>
         <BottomNavigation
           labelColor="white"
           rippleColor="white"
@@ -38,35 +47,22 @@ export default class EmployeeHome extends Component {
             bottom: 0,
             right: 0
           }}
-          onTabChange={newTabIndex =>
-            alert(`New Tab at position ${newTabIndex}`)
+          onTabChange={
+            newTabIndex => this.setState({ tabIndex: newTabIndex })
+            //alert(`New Tab at position ${newTabIndex}`)
           }
         >
           <Tab
-            barBackgroundColor="#37474F"
-            label="Movies & TV"
-            icon={<Icon size={24} color="white" name="tv" />}
+            barBackgroundColor="royalblue"
+            label="Dashboard"
+            icon={<Icon size={24} color="white" name="person" />}
           />
           <Tab
-            barBackgroundColor="#00796B"
-            label="Music"
-            icon={<Icon size={24} color="white" name="music-note" />}
+            barBackgroundColor="#3399CC"
+            label="Feed"
+            icon={<Icon size={24} color="white" name="web" />}
           />
         </BottomNavigation>
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <Text
-            style={{
-              color: "#5478e4",
-              fontWeight: "bold",
-              fontSize: 25,
-              paddingTop: "30%"
-            }}
-          >
-            Machine Learning
-          </Text>
-        </View>
       </View>
     );
   }

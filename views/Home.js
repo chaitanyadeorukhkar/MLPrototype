@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Dimensions,
-  LayoutAnimation
+  LayoutAnimation,
+  StatusBar
 } from "react-native";
 import Btn from "react-native-micro-animated-button";
 import { Actions } from "react-native-router-flux";
@@ -22,13 +23,12 @@ export default class Home extends Component {
     };
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   onEmployeePress() {
     this.b1.load();
     setTimeout(() => {
-      Actions.EmployeeHome()
+      Actions.EmployeeHome();
     }, 1000);
   }
 
@@ -39,6 +39,13 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar
+          backgroundColor="white"
+          barStyle="dark-content"
+          translucent={true}
+          animated={true}
+          showHideTransition='slide'
+        />
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
