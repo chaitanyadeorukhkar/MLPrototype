@@ -48,6 +48,15 @@ export default class Dashboard extends Component {
             marginBottom: "10%"
           }}
         >
+        <View style={{width:width,alignItems:'center'}}>
+          <Text style={{fontSize:20,color:'#283593'}}>Prasad Vagal</Text>
+        </View>
+        <View style={{width:width,alignItems:'flex-start'}}>
+          <Text style={{fontSize:17}}>Skills acquired:</Text>
+        </View>
+        
+        <View style={{width:width,alignItems:'flex-start',height:40}}>
+        </View>
           <ScrollView>
             <Text
               style={{
