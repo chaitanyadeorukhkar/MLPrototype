@@ -26,7 +26,9 @@ export default class EmployeeHome extends Component {
   }
 
   componentDidMount() {}
-
+  componentWillUpdate(){
+    LayoutAnimation.easeInEaseOut()
+  }
   render;
   render() {
     return (
