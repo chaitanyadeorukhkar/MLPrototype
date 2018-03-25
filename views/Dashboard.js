@@ -12,7 +12,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import Btn from "react-native-micro-animated-button";
-import { Actions } from "react-native-router-flux";
+import { Actions, ActionConst } from "react-native-router-flux";
 import AnimatedBar from "react-native-animated-bar";
 import { List, ListItem, CardItem, Card, Thumbnail } from "native-base";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -41,6 +41,24 @@ export default class Dashboard extends Component {
           animated={true}
           showHideTransition="slide"
         />
+        <View
+          style={{
+            position: "absolute",
+            top: 30,
+            bottom: 0,
+            right: 5,
+            height: 50,
+            zIndex: 4
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => {
+              Actions.home({ type: ActionConst.RESET });
+            }}
+          >
+            <Icon name="exit-to-app" size={30} style={{ color: "white" }} />
+          </TouchableOpacity>
+        </View>
         <View
           style={{
             flex: 1,
@@ -298,7 +316,9 @@ export default class Dashboard extends Component {
                     flex: 1
                   }}
                 >
-                  <TouchableOpacity style={{flex:1,width:'100%',height:'100%'}}>
+                  <TouchableOpacity
+                    style={{ flex: 1, width: "100%", height: "100%" }}
+                  >
                     <View style={{ flex: 1 }}>
                       <View
                         style={{
