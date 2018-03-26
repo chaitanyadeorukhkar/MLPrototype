@@ -24,7 +24,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-     Actions.ManagerHome()
+     //Actions.ManagerHome()
   }
 
   onEmployeePress() {

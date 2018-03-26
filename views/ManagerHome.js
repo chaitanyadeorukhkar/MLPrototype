@@ -11,7 +11,7 @@ import Btn from "react-native-micro-animated-button";
 import BottomNavigation, { Tab } from "react-native-material-bottom-navigation";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import ManagerDashboard from './ManagerDashboard'
-import Feed from './Feed'
+import ManagerFeed from './ManagerFeed'
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
 
@@ -36,7 +36,7 @@ export default class ManagerHome extends Component {
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          {this.state.tabIndex === 0 ? <ManagerDashboard /> : <Feed />}
+          {this.state.tabIndex === 0 ? <ManagerDashboard /> : <ManagerFeed />}
         </View>
         <BottomNavigation
           labelColor="white"
@@ -55,12 +55,12 @@ export default class ManagerHome extends Component {
           }
         >
           <Tab
-            barBackgroundColor="royalblue"
+            barBackgroundColor="#00695C"
             label="Dashboard"
             icon={<Icon size={24} color="white" name="person" />}
           />
           <Tab
-            barBackgroundColor="#3399CC"
+            barBackgroundColor="#4E342E"
             label="Feed"
             icon={<Icon size={24} color="white" name="web" />}
           />
