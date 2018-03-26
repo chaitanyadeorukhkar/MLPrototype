@@ -24,7 +24,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-   // Actions.EmployeeHome()
+     Actions.ManagerHome()
   }
 
   onEmployeePress() {
@@ -36,6 +36,9 @@ export default class Home extends Component {
 
   onManagerPress() {
     this.b2.load();
+    setTimeout(() => {
+      Actions.ManagerHome();
+    }, 1000);
   }
 
   render() {
@@ -46,20 +49,20 @@ export default class Home extends Component {
           barStyle="dark-content"
           translucent={true}
           animated={true}
-          showHideTransition='slide'
+          showHideTransition="slide"
         />
         <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          style={{ flex: 1, justifyContent: "center", alignItems: "center",  }}
         >
           <Text
             style={{
               color: "#5478e4",
               fontWeight: "bold",
               fontSize: 25,
-              paddingTop: "30%"
+              paddingTop: "50%"
             }}
           >
-            Machine Learning
+            GCL Alexa
           </Text>
           <Text
             style={{
@@ -69,12 +72,10 @@ export default class Home extends Component {
               paddingTop: "1%",
               alignItems: "flex-end"
             }}
-          >
-            - Prototype
-          </Text>
+          />
         </View>
         <View
-          style={{ flex: 3, justifyContent: "center", alignItems: "center" }}
+          style={{ flex: 4, justifyContent: "center", alignItems: "center" }}
         >
           <Btn
             foregroundColor={"royalblue"}
